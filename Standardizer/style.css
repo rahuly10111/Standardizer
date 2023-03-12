@@ -1,0 +1,161 @@
+#standardizerlogo {
+    width: 170px;
+    height: 40px;
+}
+
+#links {
+    margin-right: 24%;
+    margin-left: 20%;
+}
+
+#PrifleImage {
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    position: relative;
+    left: 675px;
+}
+
+ul li {
+    display: inline-block;
+    font-size: 16px;
+}
+
+ul li a {
+    color: rgb(38, 121, 236);
+    text-decoration: none;
+    display: inline-block;
+    padding: 14px;
+    transition: color 0.5s;
+}
+
+ul li .underline {
+    height: 2px;
+    background-color: transparent;
+    width: 0%;
+    transition: width 0.2s, background-color 0.5s;
+    margin: 0 auto;
+}
+
+ul li:active a {
+    transition: none;
+    color: rgba(255, 255, 255, 0.76);
+}
+
+ul li:active .underline {
+    transition: none;
+    background-color: rgba(255, 255, 255, 0.76);
+}
+
+ul li.active-link .underline {
+    width: 40%;
+    background-color: rgb(38, 121, 236);
+}
+
+ul li:active .underline {
+    transition: none;
+    background-color: rgb(92, 84, 84);
+}
+
+ul li {
+    display: inline-block;
+    font-size: 16px;
+}
+
+.navbar-expand-lg {
+    height: 55px;
+    background-color: rgb(242 237 230);
+    padding: 0px;
+}
+
+.navbar-collapse {
+    position: relative;
+    right: 700px !important;
+}
+
+.mx-1 {
+    background-color: #F2F2F2;
+    color: rgb(0, 0, 0);
+}
+
+.btn.active {
+    background-color: #51B7E7;
+    color: white;
+}
+
+.BalanceSheet {
+    color: white;
+    background-color: #3CB7E7;
+    font-size: 12px;
+    border-radius: 4px;
+    width: 266px;
+}
+
+.LikelyDestinationAccounts {
+    position: relative;
+    left: -197px;
+}
+
+.Mostlikely_Likely_PossibleDiv {
+    width: 458px;
+}
+
+.DestinationAcc {
+    color: white;
+    font-size: 12px;
+    border-radius: 2px;
+    width: 350px;
+}
+
+.mostLikelyAccount {
+    background-color: #169099;
+    color: white;
+    font-size: 12px;
+    border-radius: 2px;
+    width: 232px;
+}
+
+
+.LikelyAccount {
+    background-color: #3dc7d0;
+    color: white;
+    font-size: 12px;
+    border-radius: 2px;
+    width: 232px;
+
+}
+
+.possibleAccount {
+    background-color: #7cced4;
+    color: white;
+    font-size: 12px;
+    border-radius: 2px;
+    width: 232px;
+
+}
+
+.SourceAccountDiv {
+    position: relative;
+    right: -24px;
+
+}
+
+.list-group-item {
+    width: 340px;
+    font-size: 13px;
+    margin: 4px;
+    border: 1px solid gray;
+}
+
+.destinationAccountDiv {
+    position: relative;
+    /* right: -86pxpx; */
+    left: 86px;
+}
+
+.list-group-item-source {
+    width: 260px;
+    font-size: 13px;
+    margin: 4px;
+    border: 1px solid gray;
+}
