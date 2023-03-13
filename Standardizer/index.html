@@ -17,8 +17,8 @@
     <header>
         <nav class="navbar navbar-expand-lg ">
             <div class="container-fluid ps-0 pe-4">
-                <a class="navbar-brand ms-5 ps-1" href=""> <img src="Images/Standardizer_logo.png" alt="" srcset=""
-                        id="standardizerlogo"></a>
+                <a class="navbar-brand ms-5 ps-1" href=""> <img src="Images/Standardizer_logo-removebg-preview.png"
+                        alt="" srcset="" id="standardizerlogo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -44,9 +44,9 @@
 
     <div class="container-fluid d-flex mt-4 ps-4">
         <div class="container-fluid p-0 px-4">
-            <button type="radio" class="btn active mx-1 ">Asset</button>
-            <button type="radio" class="btn mx-1 ">Liablity</button>
-            <button type="radio" class="btn mx-1 ">Equity/Capital</button>
+            <button type="radio" class="btn active mx-1 " id="assetsbtn">Assets</button>
+            <button type="radio" class="btn mx-1 " id="liabilitybtn">Liability</button>
+            <button type="radio" class="btn mx-1 " id="equitydata">Equity/Capital</button>
             <button type="radio" class="btn mx-1 ">Revenue</button>
             <button type="radio" class="btn mx-1 ">CoGS</button>
             <button type="radio" class="btn mx-1 ">G&A Expenses</button>
@@ -77,7 +77,7 @@
                         <div class="LikelyAccount ps-2 p-2 ">Likely</div>
                         <ul class="list-group" id="LikelyAccount"></ul>
                     </div>
-                    <div class="container  ">
+                    <div class="">
                         <div class="possibleAccount ps-2 p-2">Possible</div>
                         <ul class="list-group" id="possibleAccount"></ul>
                     </div>
@@ -86,6 +86,26 @@
             <div class="container destinationAccountDiv">
                 <h6> <b>Destination Account Structure </b> </h6>
                 <div class="DestinationAcc ps-2 p-2 bg-success">Balance Sheet Accounts</div>
+                <div class="scrollbtn">
+                    <button id="scrollright"><i class="bi bi-chevron-right"></i></button>
+                </div>
+                <div class="scrollbtn">
+                    <button id="scrollleft"><i class="bi bi-chevron-left"></i></button>
+                </div>
+                <div class="scrollmenu mt-2" id="scrollbar">
+                    <a class=" ps-4 scrollItems" id="alldata">All</a>
+                    <a class="scrollItems" id="assetsdata">Assets</a>
+                    <a class="scrollItems" id="libilitydata">Liability</a>
+                    <a class="scrollItems" id="equitydata">Equity/Capital</a>
+                    <a class="scrollItems" id="revenuedata">Revenue</a>
+                    <a class="scrollItems" id="cogsdata">CoGS</a>
+                    <a class="scrollItems" id="gaexpensesdata">G&A Expenses</a>
+                </div>
+                <div class="filterinput">
+
+                    <input type="text" class="form-control searchbar " placeholder="Search Account Here..">
+                    <i class="bi bi-search searchicon"></i>
+                </div>
                 <ul class="list-group" id="DestinationAccountStructureData"></ul>
             </div>
         </div>
