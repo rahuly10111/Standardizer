@@ -78,9 +78,14 @@ ul li {
   color: rgb(0, 0, 0);
 }
 
-.btn.active {
-  background-color: #51b7e7;
-  color: white;
+.btnshow {
+  background-color: #51b7e7 !important;
+  color: white !important;
+}
+
+.btnhide {
+  background-color: rgb(236, 234, 234);
+  color: darkgray;
 }
 
 .BalanceSheet {
@@ -136,10 +141,26 @@ ul li {
   right: -24px;
 }
 
-.list-item {
-  width: 272px;
+.list-group-item {
+  width: 274px;
   font-size: 13px;
   margin: 3px;
+  border: 1px solid gray !important;
+  height: 30px;
+  border-radius: 2px;
+  font-size: 11px;
+  margin-top: 6px !important;
+  margin: 0px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.list-group-item-likely {
+  width: 210px;
+  font-size: 13px;
+  margin-top: 6px !important;
+  margin: 0px;
   border: 1px solid gray;
   height: 30px;
   border-radius: 2px;
@@ -152,12 +173,17 @@ ul li {
 }
 
 .list-group-item-source {
-  width: 260px;
+  width: 262px;
   font-size: 13px;
-  margin: 3px;
+  margin-top: 6px !important;
+  margin: 0px;
   border: 1px solid gray;
   height: 30px;
   border-radius: 2px;
+  font-size: 12px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 #scrollright {
@@ -198,6 +224,7 @@ div.scrollmenu {
   height: 32px;
   padding: 0px;
   border: 1px solid gray;
+  font-size: 10px;
 }
 
 .filterinput {
@@ -216,22 +243,99 @@ div.scrollmenu a {
   display: inline-block;
   color: black;
   text-align: center;
-  padding: 6px;
+  padding: 5px;
   text-decoration: none;
+  font-size: 13px;
 }
 
 .filterinput input {
   border: none;
 }
 
-.searchicon{
-    position: relative;
-    top: -31px;
-    right: -4px;
-    color: gray;
+.searchicon {
+  position: relative;
+  top: -31px;
+  right: -4px;
+  color: gray;
 }
 
-.searchbar{
-    padding-left: 25px;
+.searchbar {
+  padding-left: 25px;
 }
 
+.scrollmenu a.active {
+  color: #0d9d66;
+}
+/* .scrollmenu a {
+  text-decoration: none;
+  display: inline-block;
+  margin: 0 10px;
+  color: #333;
+  font-weight: bold;
+  padding: 8px 4px;
+} */
+/* .scrollmenu a:after {
+  content: "";
+  position: absolute;
+  left: 72px;
+  width: 27px;
+  top: 98px;
+  height: 2px;
+  background-color: #0d9d66;
+  transform: scaleX(0);
+  transform-origin: bottom;
+  transition: transform 0.3s ease-in-out;
+} */
+
+.scrollmenu a.active:after {
+  transform: scaleX(1);
+}
+
+.destinationDiv {
+  overflow-y: scroll;
+  height: 600px;
+  width: 292px;
+}
+
+.destinationDiv::-webkit-scrollbar {
+  width: 6px;
+  height: 16px;
+}
+.destinationDiv::-webkit-scrollbar-track {
+  border: 1px solid rgb(58, 167, 240);
+  border-radius: 8px;
+}
+.destinationDiv::-webkit-scrollbar-thumb {
+  background: rgb(58, 167, 240);
+  border-radius: 8px;
+}
+.destinationDiv::-webkit-scrollbar-thumb:hover {
+  background: rgb(58, 167, 240);
+}
+
+.bi-check2-all{
+  display: flex;
+  justify-content: end;
+  position: relative;
+ left: -21px;
+ top: -14px;
+ color: rgb(0, 191, 255);
+}
+
+.bi-clock-history{
+  display: flex;
+  justify-content: end;
+  position: relative;
+ left: -6px;
+ top: -26px;
+ color: black;
+}
+
+.humanupdatecheck{
+  color: #ffa013;
+  font-size: 12px;
+  margin-top: 32px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  padding-left: 48px;
+}

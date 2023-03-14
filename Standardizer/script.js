@@ -85,7 +85,7 @@ function sourceAccountdatatable() {
     let assetssourceaccountdata = "";
     standardAccount_Object.forEach((data) => {
         if (data.Type == "Assets") {
-            assetssourceaccountdata += "<li class='list-group-item-source'>" + " &nbsp;" + data.Number + " &nbsp; " + data.Group + "</li>";
+            assetssourceaccountdata += "<li class='list-group-item-source'>" + " &nbsp;" + data.Number + " &nbsp; " + data.Name + "<i class='bi bi-check2-all'></i> <i class='bi bi-clock-history'></i>" + "</li>";
         }
     });
     $('#SourceAccountStructureData').html(assetssourceaccountdata);
@@ -101,6 +101,20 @@ function sourceAccountdatatable() {
 }
 
 $(function () {
+    $(".btnhide").click(function () {
+        $(".btnhide").removeClass("btnshow");
+        $(this).addClass("btnshow");
+    });
+});
+
+$(function () {
+    $("a").click(function () {
+        $(".unactive").removeClass("active");
+        $(this).addClass("active");
+    });
+});
+
+$(function () {
     const scrollbar = document.getElementById("scrollbar");
     const scrollLeft = document.getElementById("scrollleft");
     const scrollright = document.getElementById("scrollright");
@@ -114,10 +128,27 @@ $(function () {
     }
 });
 
+function search() {
+    let input = document.getElementById('searchbar').value
+    input = input.toLowerCase();
+    let x = document.getElementsByClassName('list-group-item');
+    for (i = 0; i < x.length; i++) {
+        if (!x[i].innerHTML.toLowerCase().includes(input)) {
+            x[i].style.display = "none";
+        }
+        else {
+            x[i].style.display = "";
+        }
+    }
+};
+
 function alldestinationdata() {
     let alltabledata = "";
     masterAccount_Object.forEach((data) => {
-        alltabledata += "<li class='list-item'>" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</li>";
+        if (data.AccountCode != "") {
+            alltabledata += "<div class='list-group-item'>" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</div>";
+        }
+
     });
     $('#DestinationAccountStructureData').html(alltabledata);
 }
@@ -125,8 +156,8 @@ function alldestinationdata() {
 function assetsdestinationdata() {
     let assettabledata = "";
     masterAccount_Object.forEach((data) => {
-        if (data.AccountTypeName == "ASSETS") {
-            assettabledata += "<li class='list-item'>" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</li>";
+        if (data.AccountTypeName == "ASSETS" && data.AccountCode != "") {
+            assettabledata += "<li class='list-group-item'>" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</li>";
         }
     });
     $('#DestinationAccountStructureData').html(assettabledata);
@@ -136,7 +167,7 @@ function libilitydestinationdata() {
     let liabilitytabledata = "";
     masterAccount_Object.forEach((data) => {
         if (data.AccountTypeName == "LIABILITIES") {
-            liabilitytabledata += "<li class='list-item'>" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</li>";
+            liabilitytabledata += "<li class='list-group-item'>" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</li>";
         }
     });
     $('#DestinationAccountStructureData').html(liabilitytabledata);
@@ -146,7 +177,7 @@ function equitydestinationdata() {
     let equitytabledata = "";
     masterAccount_Object.forEach((data) => {
         if (data.AccountTypeName == "EQUITY/CAPITAL") {
-            equitytabledata += "<li class='list-item'>" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</li>";
+            equitytabledata += "<li class='list-group-item'>" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</li>";
         }
     });
     $('#DestinationAccountStructureData').html(equitytabledata);
@@ -171,35 +202,65 @@ $("#equitydata").click(function () {
 
 $("#assetsbtn").click(function () {
     let assetssourceaccountdata = "";
+    let assetsmostlikelydata = "";
+    let assetslikelydata = "";
+    let assetspossibledata = "";
     standardAccount_Object.forEach((data) => {
-        if (data.Type == "Assets") {
-            assetssourceaccountdata += "<li class='list-group-item-source'>" + " &nbsp;" + data.Number + " &nbsp; " + data.Group + "</li>";
+        if (data.Type == "Assets" && data.Number != "") {
+            assetssourceaccountdata += "<div class='list-group-item-source'>" + " &nbsp;" + data.Number + " &nbsp; " + data.Name + "<i class='bi bi-check2-all'></i> <i class='bi bi-clock-history'></i>" + "</div>";
+
+            assetsmostlikelydata += "<li class='list-group-item-likely' id='mostlikely_" + data.Number + "'>" + "</li>";
+            assetslikelydata += "<li class='list-group-item-likely'  id='likely_" + data.Number + "' >" + "</li>";
+            assetspossibledata += "<li class='list-group-item-likely'  id='possible_" + data.Number + "' >" + "</li>";
         }
     });
     $('#SourceAccountStructureData').html(assetssourceaccountdata);
+    $('#mostLikelyAccount').html(assetsmostlikelydata);
+    $('#LikelyAccount').html(assetslikelydata);
+    $('#possibleAccount').html(assetspossibledata);
     assetsdestinationdata();
     console.log(standardAccount_Object);
 });
 
 $("#liabilitybtn").click(function () {
     let liabilitysourceaccountdata = "";
+    let liabilitymostlikelydata = "";
+    let liabilitylikelydata = "";
+    let liabilitypossibledata = "";
     standardAccount_Object.forEach((data) => {
-        if (data.Type == "Liabilities") {
-            liabilitysourceaccountdata += "<li class='list-group-item-source'>" + " &nbsp;" + data.Number + " &nbsp;" + data.Group + "</li>";
+        if (data.Type == "Liabilities" && data.Number != "") {
+            liabilitysourceaccountdata += "<li class='list-group-item-source'>" + " &nbsp;" + data.Number + " &nbsp;" + data.Name + "<i class='bi bi-check2-all'></i> <i class='bi bi-clock-history'></i>" + "</li>";
+
+            liabilitymostlikelydata += "<li class='list-group-item-likely' id='mostlikely_" + data.Number + "'>" + "</li>";
+            liabilitylikelydata += "<li class='list-group-item-likely'  id='likely_" + data.Number + "' >" + "</li>";
+            liabilitypossibledata += "<li class='list-group-item-likely'  id='possible_" + data.Number + "' >" + "</li>";
         }
     });
     $('#SourceAccountStructureData').html(liabilitysourceaccountdata);
+    $('#mostLikelyAccount').html(liabilitymostlikelydata);
+    $('#LikelyAccount').html(liabilitylikelydata);
+    $('#possibleAccount').html(liabilitypossibledata);
     libilitydestinationdata();
 })
 
-$("#equitydata").click(function () {
+$("#equitydatabtn").click(function () {
     let equitysourceaccountdata = "";
+    let equitymostlikelydata = "";
+    let equitylikelydata = "";
+    let equitypossibledata = "";
     standardAccount_Object.forEach((data) => {
-        if (data.Type == "Equity") {
-            equitysourceaccountdata += "<li class='list-group-item-source'>" + " &nbsp;" + data.Number + " &nbsp;" + data.Group + "</li>";
+        if (data.Type == "Equity" && data.Number != "") {
+            equitysourceaccountdata += "<li class='list-group-item-source'>" + " &nbsp;" + data.Number + " &nbsp;" + data.Name + "<i class='bi bi-check2-all'></i> <i class='bi bi-clock-history'></i>" + "</li>";
+
+            equitymostlikelydata += "<li class='list-group-item-likely' id='mostlikely_" + data.Number + "'>" + "</li>";
+            equitylikelydata += "<li class='list-group-item-likely'  id='likely_" + data.Number + "' >" + "</li>";
+            equitypossibledata += "<li class='list-group-item-likely'  id='possible_" + data.Number + "' >" + "</li>";
         }
     });
     $('#SourceAccountStructureData').html(equitysourceaccountdata);
+    $('#mostLikelyAccount').html(equitymostlikelydata);
+    $('#LikelyAccount').html(equitylikelydata);
+    $('#possibleAccount').html(equitypossibledata);
     equitydestinationdata();
 })
 
