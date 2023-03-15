@@ -12,6 +12,7 @@ $(function () {
             xhr.status < 300) {
             showData(xhr.responseText);
             alldestinationdata();
+            console.log(masterAccount_Object);
         }
     }
     function showData(data) {
@@ -32,21 +33,6 @@ $(function () {
     }
 });
 
-
-// dragula([DestinationAccountStructureData, mostLikelyAccount], {
-//     copy: true,
-//     accepts: function (element, target) {
-//     },
-// });
-// dragula([DestinationAccountStructureData, mostLikelyAccount])
-//     .on("drag", function (element) {
-//     })
-//     .on("drop", function (element) {
-//         setTimeout(function () {
-//         }, 0);
-//     });
-
-
 var standardAccount_String_Data;
 var standardAccount_Object;
 var standardAccount_Data_Array = new Array;
@@ -61,6 +47,7 @@ $(function () {
             xhr.status < 300) {
             showData(xhr.responseText);
             sourceAccountdatatable();
+            console.log(standardAccount_Object);
         }
     }
     function showData(data) {
@@ -81,23 +68,24 @@ $(function () {
     }
 });
 
+var allsourceaccountdata = "";
+var allmostlikelydata = "";
+var alllikelydata = "";
+var allpossibledata = "";
 function sourceAccountdatatable() {
-    let assetssourceaccountdata = "";
     standardAccount_Object.forEach((data) => {
-        if (data.Type == "Assets") {
-            assetssourceaccountdata += "<li class='list-group-item-source'>" + " &nbsp;" + data.Number + " &nbsp; " + data.Name + "<i class='bi bi-check2-all'></i> <i class='bi bi-clock-history'></i>" + "</li>";
+        if (data.Number != "") {
+            allsourceaccountdata += "<li class='sourceAccountDataList' id='" + data.Number + "'>" + " &nbsp;" + data.Number + " &nbsp; " + data.Name + "<i class='bi bi-check2-all'></i> <i class='bi bi-clock-history'></i>" + "</li>";
+
+            allmostlikelydata += "<li class='mostLikelyAccountDatalist' id='mostlikely_" + data.Number + "'>" + "</li>";
+            alllikelydata += "<li class='LikelyAccountDatalist'  id='likely_" + data.Number + "' >" + "</li>";
+            allpossibledata += "<li class='possibleAccountDatalist'  id='possible_" + data.Number + "' >" + "</li>";
         }
     });
-    $('#SourceAccountStructureData').html(assetssourceaccountdata);
-    // const standardAccount_Element = document.getElementById('SourceAccountStructureData');
-    // standardAccount_Object.forEach((data) => {
-    //     const new_li_Element = document.createElement('li');
-    //     if (data.Type == "Assets") {
-    //         new_li_Element.textContent = ` ${'  '} ${data.Number} ${' '} ${data.Group} `;
-    //         new_li_Element.classList.add('list-group-item-source')
-    //     };
-    //     standardAccount_Element.appendChild(new_li_Element);
-    // });
+    $('#SourceAccountStructureData').html(allsourceaccountdata);
+    $('#mostLikelyAccount').html(allmostlikelydata);
+    $('#LikelyAccount').html(alllikelydata);
+    $('#possibleAccount').html(allpossibledata);
 }
 
 $(function () {
@@ -131,7 +119,7 @@ $(function () {
 function search() {
     let input = document.getElementById('searchbar').value
     input = input.toLowerCase();
-    let x = document.getElementsByClassName('list-group-item');
+    let x = document.getElementsByClassName('destinationData');
     for (i = 0; i < x.length; i++) {
         if (!x[i].innerHTML.toLowerCase().includes(input)) {
             x[i].style.display = "none";
@@ -146,7 +134,7 @@ function alldestinationdata() {
     let alltabledata = "";
     masterAccount_Object.forEach((data) => {
         if (data.AccountCode != "") {
-            alltabledata += "<div class='list-group-item'>" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</div>";
+            alltabledata += "<div class='destinationData'>" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</div>";
         }
 
     });
@@ -157,7 +145,7 @@ function assetsdestinationdata() {
     let assettabledata = "";
     masterAccount_Object.forEach((data) => {
         if (data.AccountTypeName == "ASSETS" && data.AccountCode != "") {
-            assettabledata += "<li class='list-group-item'>" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</li>";
+            assettabledata += "<li class='destinationData'>" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</li>";
         }
     });
     $('#DestinationAccountStructureData').html(assettabledata);
@@ -167,7 +155,7 @@ function libilitydestinationdata() {
     let liabilitytabledata = "";
     masterAccount_Object.forEach((data) => {
         if (data.AccountTypeName == "LIABILITIES") {
-            liabilitytabledata += "<li class='list-group-item'>" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</li>";
+            liabilitytabledata += "<li class='destinationData'>" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</li>";
         }
     });
     $('#DestinationAccountStructureData').html(liabilitytabledata);
@@ -177,15 +165,36 @@ function equitydestinationdata() {
     let equitytabledata = "";
     masterAccount_Object.forEach((data) => {
         if (data.AccountTypeName == "EQUITY/CAPITAL") {
-            equitytabledata += "<li class='list-group-item'>" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</li>";
+            equitytabledata += "<li class='destinationData'>" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</li>";
         }
     });
     $('#DestinationAccountStructureData').html(equitytabledata);
 };
 
+function revenuedestinationdata() {
+    let equitytabledata = "";
+    masterAccount_Object.forEach((data) => {
+        if (data.AccountTypeName == "Professional Services Revenue" || data.AccountTypeName == "Product Revenue") {
+            equitytabledata += "<li class='destinationData'>" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</li>";
+        }
+    });
+    $('#DestinationAccountStructureData').html(equitytabledata);
+};
+
+// function cogsdestinationdata() {
+//     let equitytabledata = "";
+//     masterAccount_Object.forEach((data) => {
+//         if (data.AccountTypeName == "EQUITY/CAPITAL") {
+//             equitytabledata += "<li class='destinationData'>" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</li>";
+//         }
+//     });
+//     $('#DestinationAccountStructureData').html(equitytabledata);
+// };
+
+
 $("#alldata").click(function () {
     alldestinationdata();
-    console.log(masterAccount_Object);
+    console.log("master", masterAccount_Object);
 });
 
 $("#assetsdata").click(function () {
@@ -198,69 +207,116 @@ $("#libilitydata").click(function () {
 
 $("#equitydata").click(function () {
     equitydestinationdata();
-})
+});
+
+$("#revenuedata").click(function () {
+    revenuedestinationdata();
+});
 
 $("#assetsbtn").click(function () {
-    let assetssourceaccountdata = "";
-    let assetsmostlikelydata = "";
-    let assetslikelydata = "";
-    let assetspossibledata = "";
-    standardAccount_Object.forEach((data) => {
-        if (data.Type == "Assets" && data.Number != "") {
-            assetssourceaccountdata += "<div class='list-group-item-source'>" + " &nbsp;" + data.Number + " &nbsp; " + data.Name + "<i class='bi bi-check2-all'></i> <i class='bi bi-clock-history'></i>" + "</div>";
-
-            assetsmostlikelydata += "<li class='list-group-item-likely' id='mostlikely_" + data.Number + "'>" + "</li>";
-            assetslikelydata += "<li class='list-group-item-likely'  id='likely_" + data.Number + "' >" + "</li>";
-            assetspossibledata += "<li class='list-group-item-likely'  id='possible_" + data.Number + "' >" + "</li>";
+    $(".sourceAccountDataList").each(function (index) {
+        var id = this.id;
+        $(`#${id}`).hide();
+        $(`#mostlikely_${id}`).hide();
+        $(`#likely_${id}`).hide();
+        $(`#possible_${id}`).hide();
+        if (standardAccount_Object[index].Type == "Assets" && standardAccount_Object[index].Number != "") {
+            $(`#${id}`).show();
+            $(`#mostlikely_${id}`).show();
+            $(`#likely_${id}`).show();
+            $(`#possible_${id}`).show();
         }
     });
-    $('#SourceAccountStructureData').html(assetssourceaccountdata);
-    $('#mostLikelyAccount').html(assetsmostlikelydata);
-    $('#LikelyAccount').html(assetslikelydata);
-    $('#possibleAccount').html(assetspossibledata);
     assetsdestinationdata();
-    console.log(standardAccount_Object);
+    console.log("standar", standardAccount_Object);
 });
 
 $("#liabilitybtn").click(function () {
-    let liabilitysourceaccountdata = "";
-    let liabilitymostlikelydata = "";
-    let liabilitylikelydata = "";
-    let liabilitypossibledata = "";
-    standardAccount_Object.forEach((data) => {
-        if (data.Type == "Liabilities" && data.Number != "") {
-            liabilitysourceaccountdata += "<li class='list-group-item-source'>" + " &nbsp;" + data.Number + " &nbsp;" + data.Name + "<i class='bi bi-check2-all'></i> <i class='bi bi-clock-history'></i>" + "</li>";
-
-            liabilitymostlikelydata += "<li class='list-group-item-likely' id='mostlikely_" + data.Number + "'>" + "</li>";
-            liabilitylikelydata += "<li class='list-group-item-likely'  id='likely_" + data.Number + "' >" + "</li>";
-            liabilitypossibledata += "<li class='list-group-item-likely'  id='possible_" + data.Number + "' >" + "</li>";
+    $(".sourceAccountDataList").each(function (index) {
+        var id = this.id;
+        $(`#${id}`).hide();
+        $(`#mostlikely_${id}`).hide();
+        $(`#likely_${id}`).hide();
+        $(`#possible_${id}`).hide();
+        if (standardAccount_Object[index].Type == "Liabilities" && standardAccount_Object[index].Number != "") {
+            $(`#${id}`).show();
+            $(`#mostlikely_${id}`).show();
+            $(`#likely_${id}`).show();
+            $(`#possible_${id}`).show();
         }
     });
-    $('#SourceAccountStructureData').html(liabilitysourceaccountdata);
-    $('#mostLikelyAccount').html(liabilitymostlikelydata);
-    $('#LikelyAccount').html(liabilitylikelydata);
-    $('#possibleAccount').html(liabilitypossibledata);
     libilitydestinationdata();
-})
+});
 
-$("#equitydatabtn").click(function () {
-    let equitysourceaccountdata = "";
-    let equitymostlikelydata = "";
-    let equitylikelydata = "";
-    let equitypossibledata = "";
-    standardAccount_Object.forEach((data) => {
-        if (data.Type == "Equity" && data.Number != "") {
-            equitysourceaccountdata += "<li class='list-group-item-source'>" + " &nbsp;" + data.Number + " &nbsp;" + data.Name + "<i class='bi bi-check2-all'></i> <i class='bi bi-clock-history'></i>" + "</li>";
-
-            equitymostlikelydata += "<li class='list-group-item-likely' id='mostlikely_" + data.Number + "'>" + "</li>";
-            equitylikelydata += "<li class='list-group-item-likely'  id='likely_" + data.Number + "' >" + "</li>";
-            equitypossibledata += "<li class='list-group-item-likely'  id='possible_" + data.Number + "' >" + "</li>";
+$("#equitybtn").click(function () {
+    $(".sourceAccountDataList").each(function (index) {
+        var id = this.id;
+        $(`#${id}`).hide();
+        $(`#mostlikely_${id}`).hide();
+        $(`#likely_${id}`).hide();
+        $(`#possible_${id}`).hide();
+        if (standardAccount_Object[index].Type == "Equity" && standardAccount_Object[index].Number != "") {
+            $(`#${id}`).show();
+            $(`#mostlikely_${id}`).show();
+            $(`#likely_${id}`).show();
+            $(`#possible_${id}`).show();
         }
     });
-    $('#SourceAccountStructureData').html(equitysourceaccountdata);
-    $('#mostLikelyAccount').html(equitymostlikelydata);
-    $('#LikelyAccount').html(equitylikelydata);
-    $('#possibleAccount').html(equitypossibledata);
     equitydestinationdata();
+});
+
+$("#revenuebtn").click(function () {
+    $(".sourceAccountDataList").each(function (index) {
+        var id = this.id;
+        $(`#${id}`).hide();
+        $(`#mostlikely_${id}`).hide();
+        $(`#likely_${id}`).hide();
+        $(`#possible_${id}`).hide();
+        if (standardAccount_Object[index].Type == "Revenue" && standardAccount_Object[index].Number != "") {
+            $(`#${id}`).show();
+            $(`#mostlikely_${id}`).show();
+            $(`#likely_${id}`).show();
+            $(`#possible_${id}`).show();
+        }
+    });
+    revenuedestinationdata();
 })
+
+$(function () {
+    new Sortable(DestinationAccountStructureData, {
+        group: {
+            name: "DestinationDataShare",
+            pull: "clone",
+            // ghostclass:'mostLikelyAccountDatalist',
+            put: false,
+        },
+        animation: 150,
+        sort: false,
+        onEnd: function (evt) {
+            // Get the dragged element
+            var item = evt.item;
+            item.classList = "dropdata";
+        }
+
+    });
+    $(".mostLikelyAccountDatalist").each(function () {
+        new Sortable(this, {
+            group: "DestinationDataShare",
+            animation: 150,
+        });
+    });
+    $(".LikelyAccountDatalist").each(function () {
+        new Sortable(this, {
+            group: "DestinationDataShare",
+            animation: 150,
+        });
+    });
+    $(".possibleAccountDatalist").each(function () {
+        new Sortable(this, {
+            group: "DestinationDataShare",
+            animation: 150,
+        });
+    });
+
+});
 

@@ -3,7 +3,7 @@
   height: 40px;
 }
 
-#links {
+#coaPage {
   margin-right: 14%;
   margin-left: 20%;
 }
@@ -141,7 +141,7 @@ ul li {
   right: -24px;
 }
 
-.list-group-item {
+.destinationData {
   width: 274px;
   font-size: 13px;
   margin: 3px;
@@ -151,19 +151,23 @@ ul li {
   font-size: 11px;
   margin-top: 6px !important;
   margin: 0px;
+  padding: 6px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
-.list-group-item-likely {
-  width: 210px;
+.mostLikelyAccountDatalist , .LikelyAccountDatalist ,.possibleAccountDatalist {
+  width: 212px;
   font-size: 13px;
   margin-top: 6px !important;
   margin: 0px;
   border: 1px solid gray;
   height: 30px;
   border-radius: 2px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .destinationAccountDiv {
@@ -172,8 +176,8 @@ ul li {
   left: 86px;
 }
 
-.list-group-item-source {
-  width: 262px;
+.sourceAccountDataList {
+  width: 266px;
   font-size: 13px;
   margin-top: 6px !important;
   margin: 0px;
@@ -181,6 +185,7 @@ ul li {
   height: 30px;
   border-radius: 2px;
   font-size: 12px;
+  padding: 5px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -320,6 +325,7 @@ div.scrollmenu a {
  left: -21px;
  top: -14px;
  color: rgb(0, 191, 255);
+ padding-left: 10px;
 }
 
 .bi-clock-history{
@@ -338,4 +344,11 @@ div.scrollmenu a {
   margin-bottom: 0px;
   padding-bottom: 0px;
   padding-left: 48px;
+}
+
+.dropdata{
+  font-size: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
