@@ -157,7 +157,9 @@ ul li {
   text-overflow: ellipsis;
 }
 
-.mostLikelyAccountDatalist , .LikelyAccountDatalist ,.possibleAccountDatalist {
+.mostLikelyAccountDatalist,
+.LikelyAccountDatalist,
+.possibleAccountDatalist {
   width: 212px;
   font-size: 13px;
   margin-top: 6px !important;
@@ -253,6 +255,10 @@ div.scrollmenu a {
   font-size: 13px;
 }
 
+a:hover {
+  cursor: pointer;
+}
+
 .filterinput input {
   border: none;
 }
@@ -271,15 +277,15 @@ div.scrollmenu a {
 .scrollmenu a.active {
   color: #0d9d66;
 }
-/* .scrollmenu a {
+.scrollmenu a {
   text-decoration: none;
   display: inline-block;
   margin: 0 10px;
   color: #333;
   font-weight: bold;
   padding: 8px 4px;
-} */
-/* .scrollmenu a:after {
+}
+/* .scrollmenu a.active:after {
   content: "";
   position: absolute;
   left: 72px;
@@ -287,14 +293,10 @@ div.scrollmenu a {
   top: 98px;
   height: 2px;
   background-color: #0d9d66;
-  transform: scaleX(0);
+  transform: scaleX(1);
   transform-origin: bottom;
   transition: transform 0.3s ease-in-out;
-} */
-
-.scrollmenu a.active:after {
-  transform: scaleX(1);
-}
+}  */
 
 .destinationDiv {
   overflow-y: scroll;
@@ -318,26 +320,26 @@ div.scrollmenu a {
   background: rgb(58, 167, 240);
 }
 
-.bi-check2-all{
+.bi-check2-all {
   display: flex;
   justify-content: end;
   position: relative;
- left: -21px;
- top: -14px;
- color: rgb(0, 191, 255);
- padding-left: 10px;
+  left: -21px;
+  top: -14px;
+  color: rgb(0, 191, 255);
+  padding-left: 10px;
 }
 
-.bi-clock-history{
+.bi-clock-history {
   display: flex;
   justify-content: end;
   position: relative;
- left: -6px;
- top: -26px;
- color: black;
+  left: -6px;
+  top: -26px;
+  color: black;
 }
 
-.humanupdatecheck{
+.humanupdatecheck {
   color: #ffa013;
   font-size: 12px;
   margin-top: 32px;
@@ -346,9 +348,11 @@ div.scrollmenu a {
   padding-left: 48px;
 }
 
-.dropdata{
+.dropdata {
   font-size: 10px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  padding: 6px;
+  color: gray;
 }

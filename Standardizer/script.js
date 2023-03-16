@@ -6,13 +6,13 @@ $(function () {
     xhr.onreadystatechange = handleStateChange;
     xhr.open("GET", "MasterChartOfAcounts.csv", false);
     xhr.send();
+
     function handleStateChange() {
         if (xhr.readyState == 4 &&
             xhr.status >= 200 &&
             xhr.status < 300) {
             showData(xhr.responseText);
             alldestinationdata();
-            console.log(masterAccount_Object);
         }
     }
     function showData(data) {
@@ -46,8 +46,8 @@ $(function () {
             xhr.status >= 200 &&
             xhr.status < 300) {
             showData(xhr.responseText);
-            sourceAccountdatatable();
-            console.log(standardAccount_Object);
+            // document.getElementById("assetsbtn").click();
+            // sourceAccountdatatable();
         }
     }
     function showData(data) {
@@ -66,13 +66,15 @@ $(function () {
         standardAccount_String_Data = JSON.stringify(standardAccount_Data_Array);
         standardAccount_Object = JSON.parse(standardAccount_String_Data);
     }
+
 });
 
 var allsourceaccountdata = "";
 var allmostlikelydata = "";
 var alllikelydata = "";
 var allpossibledata = "";
-function sourceAccountdatatable() {
+$(function sourceAccountdatatable() {
+    console.log(standardAccount_Object);
     standardAccount_Object.forEach((data) => {
         if (data.Number != "") {
             allsourceaccountdata += "<li class='sourceAccountDataList' id='" + data.Number + "'>" + " &nbsp;" + data.Number + " &nbsp; " + data.Name + "<i class='bi bi-check2-all'></i> <i class='bi bi-clock-history'></i>" + "</li>";
@@ -86,7 +88,7 @@ function sourceAccountdatatable() {
     $('#mostLikelyAccount').html(allmostlikelydata);
     $('#LikelyAccount').html(alllikelydata);
     $('#possibleAccount').html(allpossibledata);
-}
+});
 
 $(function () {
     $(".btnhide").click(function () {
@@ -134,18 +136,18 @@ function alldestinationdata() {
     let alltabledata = "";
     masterAccount_Object.forEach((data) => {
         if (data.AccountCode != "") {
-            alltabledata += "<div class='destinationData'>" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</div>";
+            alltabledata += "<div class='destinationData' >" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</div>";
         }
 
     });
     $('#DestinationAccountStructureData').html(alltabledata);
-}
+};
 
 function assetsdestinationdata() {
     let assettabledata = "";
     masterAccount_Object.forEach((data) => {
         if (data.AccountTypeName == "ASSETS" && data.AccountCode != "") {
-            assettabledata += "<li class='destinationData'>" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</li>";
+            assettabledata += "<li class='destinationData' >" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</li>";
         }
     });
     $('#DestinationAccountStructureData').html(assettabledata);
@@ -227,7 +229,7 @@ $("#assetsbtn").click(function () {
             $(`#possible_${id}`).show();
         }
     });
-    assetsdestinationdata();
+    document.getElementById("assetsdata").click(assetsdestinationdata());
     console.log("standar", standardAccount_Object);
 });
 
@@ -238,14 +240,15 @@ $("#liabilitybtn").click(function () {
         $(`#mostlikely_${id}`).hide();
         $(`#likely_${id}`).hide();
         $(`#possible_${id}`).hide();
-        if (standardAccount_Object[index].Type == "Liabilities" && standardAccount_Object[index].Number != "") {
+        console.log(standardAccount_Object[index].Type);
+        if (standardAccount_Object[index].Type == "Liabilities" || standardAccount_Object[index].Type == "Liabilities " ) {
             $(`#${id}`).show();
             $(`#mostlikely_${id}`).show();
             $(`#likely_${id}`).show();
             $(`#possible_${id}`).show();
         }
     });
-    libilitydestinationdata();
+    document.getElementById("libilitydata").click(libilitydestinationdata());
 });
 
 $("#equitybtn").click(function () {
@@ -255,14 +258,14 @@ $("#equitybtn").click(function () {
         $(`#mostlikely_${id}`).hide();
         $(`#likely_${id}`).hide();
         $(`#possible_${id}`).hide();
-        if (standardAccount_Object[index].Type == "Equity" && standardAccount_Object[index].Number != "") {
+        if (standardAccount_Object[index].Type == "Equity" ) {
             $(`#${id}`).show();
             $(`#mostlikely_${id}`).show();
             $(`#likely_${id}`).show();
             $(`#possible_${id}`).show();
         }
     });
-    equitydestinationdata();
+    document.getElementById("equitydata").click(equitydestinationdata());
 });
 
 $("#revenuebtn").click(function () {
@@ -272,32 +275,36 @@ $("#revenuebtn").click(function () {
         $(`#mostlikely_${id}`).hide();
         $(`#likely_${id}`).hide();
         $(`#possible_${id}`).hide();
-        if (standardAccount_Object[index].Type == "Revenue" && standardAccount_Object[index].Number != "") {
+        if (standardAccount_Object[index].Type == "Revenue" || standardAccount_Object[index].Type == "Revenue" ) {
             $(`#${id}`).show();
             $(`#mostlikely_${id}`).show();
             $(`#likely_${id}`).show();
             $(`#possible_${id}`).show();
         }
     });
-    revenuedestinationdata();
-})
+    document.getElementById("revenuedata").click(revenuedestinationdata());
+});
+
+$("#submitbtn").click(function () {
+
+});
 
 $(function () {
     new Sortable(DestinationAccountStructureData, {
         group: {
             name: "DestinationDataShare",
-            pull: "clone",
-            // ghostclass:'mostLikelyAccountDatalist',
+            pull: 'clone',
             put: false,
         },
         animation: 150,
         sort: false,
-        onEnd: function (evt) {
-            // Get the dragged element
-            var item = evt.item;
-            item.classList = "dropdata";
-        }
 
+        onEnd: function (evt) {
+            var item = evt.item;
+            if (evt.to !== DestinationAccountStructureData) {
+                item.classList = "dropdata";
+            }
+        },
     });
     $(".mostLikelyAccountDatalist").each(function () {
         new Sortable(this, {
