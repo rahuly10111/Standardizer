@@ -310,12 +310,35 @@ $(function () {
         new Sortable(this, {
             group: "DestinationDataShare",
             animation: 150,
+            onAdd: function (evt) {
+                var item = evt.item;
+                var itemId = item.getAttribute('id');
+                var parentContainerId = evt.item.parentNode.getAttribute('id');
+                var destination = parentContainerId.substring(parentContainerId.indexOf('_')); // extract destination from parent container ID
+
+                if (evt.item.parentNode.children.length == 2) {
+                    var firstItem = evt.item.parentNode.children[0];
+                    var likelyContainer = document.getElementById('likely' + destination);
+                    likelyContainer.appendChild(firstItem);
+                }
+
+            }
         });
     });
     $(".LikelyAccountDatalist").each(function () {
         new Sortable(this, {
             group: "DestinationDataShare",
             animation: 150,
+            onAdd: function (evt) {
+                var item = evt.item;
+                var parentContainerId = evt.item.parentNode.getAttribute('id');
+                var destination = parentContainerId.substring(parentContainerId.indexOf('_')); // extract destination from parent container ID
+                if (evt.item.parentNode.children.length == 2) {
+                    var firstItem = evt.item.parentNode.children[0];
+                    var possibles = document.getElementById('possibles' + destination);
+                    possibles.appendChild(firstItem);
+                }
+            }
         });
     });
     $(".possibleAccountDatalist").each(function () {
