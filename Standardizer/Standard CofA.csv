@@ -9,7 +9,7 @@ Assets,Current assets,Cash & Equivalents,1012,Savings Account,,"In general, a pr
 Assets,Current assets,Cash & Equivalents,1013,Certificates of Deposit,,Record investments in certificate of deposits to this account. Interest earned on investments will be recorded in the 9050 account for interest revenues either at the time the interest is received (cash basis accounting) or when the right to it is earned (accrual basis accounting).
 Assets,Current assets,Cash & Equivalents,1014,Money Market Account,,"Either a commercial bank’s account or a brokerage-held account, a practice money market account provides another interest-bearing option for reserving funds to meet working capital needs or for future practice commitments."
 Assets,Current assets,General,1100,Accounts Receivable,,The account used for recording client-owed amounts for veterinary services and ancillary purchases.
-Assets,Current assets,General,1101,Allowance for Uncollectable Accounts (contra account),,This is a contra asset account associated with accounts receivable. This account will maintain a credit balance and should be used when anticipating a portion of the accounts receivable will be uncollectible in the future.
+Assets,Current assets,General,1101,Allowance for Uncollectable Accounts,,This is a contra asset account associated with accounts receivable. This account will maintain a credit balance and should be used when anticipating a portion of the accounts receivable will be uncollectible in the future.
 Assets,Current assets,General,1120,Drug and Medical Supply Inventory,,"Inventory value should be a reasonable approximation of drugs on hand (at acquisition cost) at quarterly reporting dates, including partial packages."
 Assets,Current assets,General,1130,Employee Advances,,"Advances to employees, most often as very short-term loans against future wages are recorded in this account."
 Assets,Current assets,General,1131,Advances -- Related Party,,This account is used to record episodic and quickly repaid personal expenditures made on behalf of officers or owners of the practice.
@@ -27,7 +27,7 @@ Assets,Fixed assets,Fixed assets,1240,Leasehold/Building Improvements,,"Code bui
 Assets,Fixed assets,Fixed assets,1245,Buildings,,Record any costs of buildings to which the practice holds ownership title in this account.
 Assets,Fixed assets,Fixed assets,1250,Land Improvements,,"Improvements made to land owned or leased by the practice, which includes such enhancements as driveways, sidewalks, landscaping, storm drainage, utilities, and septic systems."
 Assets,Fixed assets,Fixed assets,1255,Land,,"Record in this account the cost of any land purchased by the practice, to which it takes title (an estate in real property). As a non-wasting asset, land is not depreciated. As such, no accumulated depreciation account exists for this fixed asset."
-Assets,Fixed assets,Fixed assets,1290,Accumulated Depreciation (contra account),,"This is a general “catch-all” account for use in recording accumulated depreciation for all depreciable assets, in the event the practice owners (or accountant) prefers not to group accumulated depreciation with its related asset classes (professional equipment, office equipment, etc.) This provides an expedited method for tracking accumulated depreciation in a single balance sheet account."
+Assets,Fixed assets,Fixed assets,1290,Accumulated Depreciation,,"This is a general “catch-all” account for use in recording accumulated depreciation for all depreciable assets, in the event the practice owners (or accountant) prefers not to group accumulated depreciation with its related asset classes (professional equipment, office equipment, etc.) This provides an expedited method for tracking accumulated depreciation in a single balance sheet account."
 Assets,Other Long-Term Assets,Other Long-Term Assets,1310,Computer Software,,"Computer software purchases are capitalized and recorded in this account. Often, computer software is bundled as part of a computer system purchase. The portion of the purchase price attributable to software is identified and recorded in this account. Since tax rules change about the correct way to depreciate or amortize software, speak with the practice’s accountant to decide the best way to record system purchases which include both hardware and software components."
 Assets,Other Long-Term Assets,Other Long-Term Assets,1320,Goodwill,,Goodwill recorded in the practice books depends on the fact of a transaction involving goodwill acquisition at some time in the entity’s history. Goodwill represents the amount paid for an existing practice entity (target) that is in excess of the target’s other assets at the time of purchase. This account is only used for recording the purchase of preexisting goodwill from another entity.
 Assets,Other Long-Term Assets,Other Long-Term Assets,1321,Covenant Not to Compete,,The negotiated price assigned to the covenant not to compete in the course of allocating the total practice purchase is recorded in this account.
@@ -86,15 +86,15 @@ Equity,Equity,Equity,3103,Retained Earnings / (Deficit)  (S-Corp),,"This account
 Equity,Equity,Equity,3104,Distributions/Dividends/Draws  (S-Corp),"personal expenses, political contributions","Any dividends (Subchapter C or a personal service corporation (PSC)) or distributions (Subchapter S Corporation) are recorded here during the fiscal year. At the beginning of the subsequent fiscal year, all dividends and distributions are closed by an account adjustment to Retained Earnings/(Deficit), account 4200. Withdrawals by members of an unincorporated entity will be booked to this account, also. Modify the account title to reflect the entity type: Owner Draws, Partner Draws, or Member Draws."
 Equity,Equity,Equity,3105,Treasury Stock  (S-Corp),,"Treasury stock is the amount of previously issued stock subsequently redeemed and held by the corporation. This situation usually occurs when a shareholder retires from the practice and sells his shares back to the corporation rather than to another individual. When the corporation purchases its own shares from the departing shareholder, the shares are said to be in the treasury."
 Equity,Equity,Equity,,Sole Proprietorship,,
-Equity,Equity,Equity,3201,Owners Capital (Proprietorship),,
-Equity,Equity,Equity,3202,Additional Paid in Capital (Proprietorship),,
-Equity,Equity,Equity,3203,Owners Equity / (Deficit) (Proprietorship),,
-Equity,Equity,Equity,3204,Distributions/Dividends/Draws (Proprietorship),"personal expenses, political contributions",
+Equity,Equity,Equity,3201,Owners Capital,,
+Equity,Equity,Equity,3202,Additional Paid in Capital,,
+Equity,Equity,Equity,3203,Owners Equity / (Deficit),,
+Equity,Equity,Equity,3204,Distributions/Dividends/Draws,"personal expenses, political contributions",
 Equity,Equity,Equity,,Partnership,,
 Equity,Equity,Equity,3301,Partners Capital,,
 Equity,Equity,Equity,3302,Partners Capital -- Additional Partner,,
 Equity,Equity,Equity,3303,Partners Equity / (Deficit),,
-Equity,Equity,Equity,3304,Distributions/Dividends/Draws (Partnership),"personal expenses, political contributions",
+Equity,Equity,Equity,3304,Distributions/Dividends/Draws,"personal expenses, political contributions",
 Equity,Equity,Equity,,LLC,,
 Equity,Equity,Equity,3401,Members Capital (LLC),,
 Equity,Equity,Equity,3402,Members Equity / (Deficit) (LLC),,

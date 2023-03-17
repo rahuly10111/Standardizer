@@ -145,7 +145,7 @@ ul li {
   width: 274px;
   font-size: 13px;
   margin: 3px;
-  border: 1px solid gray !important;
+  border: 1px solid  lightgray!important;
   height: 30px;
   border-radius: 2px;
   font-size: 11px;
@@ -164,7 +164,7 @@ ul li {
   font-size: 13px;
   margin-top: 6px !important;
   margin: 0px;
-  border: 1px solid gray;
+  border: 1px solid lightgray;
   height: 30px;
   border-radius: 2px;
   overflow: hidden;
@@ -183,11 +183,13 @@ ul li {
   font-size: 13px;
   margin-top: 6px !important;
   margin: 0px;
-  border: 1px solid gray;
+  border: 1px solid lightgray;
   height: 30px;
   border-radius: 2px;
-  font-size: 12px;
+  font-size: 11px;
   padding: 5px;
+  padding-left: 2px;
+  padding-right: 0px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -230,7 +232,7 @@ div.scrollmenu {
   width: 274px;
   height: 32px;
   padding: 0px;
-  border: 1px solid gray;
+  border: 1px solid lightgray;
   font-size: 10px;
 }
 
@@ -242,7 +244,7 @@ div.scrollmenu {
   width: 274px;
   height: 32px;
   padding: 0px;
-  border: 1px solid gray;
+  border: 1px solid lightgray;
   border-top: none;
 }
 
@@ -355,4 +357,5 @@ a:hover {
   text-overflow: ellipsis;
   padding: 6px;
   color: gray;
+ width: 212px !important;
 }

@@ -141,6 +141,7 @@ function alldestinationdata() {
 
     });
     $('#DestinationAccountStructureData').html(alltabledata);
+
 };
 
 function assetsdestinationdata() {
@@ -241,7 +242,7 @@ $("#liabilitybtn").click(function () {
         $(`#likely_${id}`).hide();
         $(`#possible_${id}`).hide();
         console.log(standardAccount_Object[index].Type);
-        if (standardAccount_Object[index].Type == "Liabilities" || standardAccount_Object[index].Type == "Liabilities " ) {
+        if (standardAccount_Object[index].Type == "Liabilities" || standardAccount_Object[index].Type == "Liabilities ") {
             $(`#${id}`).show();
             $(`#mostlikely_${id}`).show();
             $(`#likely_${id}`).show();
@@ -258,7 +259,7 @@ $("#equitybtn").click(function () {
         $(`#mostlikely_${id}`).hide();
         $(`#likely_${id}`).hide();
         $(`#possible_${id}`).hide();
-        if (standardAccount_Object[index].Type == "Equity" ) {
+        if (standardAccount_Object[index].Type == "Equity") {
             $(`#${id}`).show();
             $(`#mostlikely_${id}`).show();
             $(`#likely_${id}`).show();
@@ -275,7 +276,7 @@ $("#revenuebtn").click(function () {
         $(`#mostlikely_${id}`).hide();
         $(`#likely_${id}`).hide();
         $(`#possible_${id}`).hide();
-        if (standardAccount_Object[index].Type == "Revenue" || standardAccount_Object[index].Type == "Revenue" ) {
+        if (standardAccount_Object[index].Type == "Revenue" || standardAccount_Object[index].Type == "Revenue") {
             $(`#${id}`).show();
             $(`#mostlikely_${id}`).show();
             $(`#likely_${id}`).show();
@@ -285,7 +286,39 @@ $("#revenuebtn").click(function () {
     document.getElementById("revenuedata").click(revenuedestinationdata());
 });
 
+
 $("#submitbtn").click(function () {
+    const tabledata = [];
+    var sourcedata = document.getElementById("SourceAccountStructureData");
+    var sourcelidata = sourcedata.querySelectorAll("li");
+    console.log(sourcelidata);
+
+    standardAccount_Object.forEach(li => {
+        let data = li.Number;
+        console.log(data)
+
+        const obj = {
+            sourcedata: data,
+            Mostlikely: $("#mostlikely_" + data).html(),
+            Likely: $("#likely_" + data).html(),
+            Possible: $("#possible_" + data).html(),
+        }
+        tabledata.push(obj);
+    })
+    localStorage.setItem("Data", JSON.stringify(tabledata));
+});
+
+$(function () {
+    var getlocalstoragedata = JSON.parse(localStorage.getItem("Data"));
+    var getsourcedata = document.getElementById("SourceAccountStructureData");
+    var getsourcelidata = getsourcedata.querySelectorAll("li");
+    getsourcelidata.forEach(function (li, index) {
+        let getdata = li.id;
+        $("#mostlikely_" + getdata).html(getlocalstoragedata[index].Mostlikely)
+        $("#likely_" + getdata).html(getlocalstoragedata[index].Likely)
+        $("#possible_" + getdata).html(getlocalstoragedata[index].Possible)
+    });
+
 
 });
 
@@ -298,7 +331,6 @@ $(function () {
         },
         animation: 150,
         sort: false,
-
         onEnd: function (evt) {
             var item = evt.item;
             if (evt.to !== DestinationAccountStructureData) {
@@ -306,41 +338,63 @@ $(function () {
             }
         },
     });
+
     $(".mostLikelyAccountDatalist").each(function () {
         new Sortable(this, {
             group: "DestinationDataShare",
             animation: 150,
             onAdd: function (evt) {
-                var item = evt.item;
-                var itemId = item.getAttribute('id');
-                var parentContainerId = evt.item.parentNode.getAttribute('id');
-                var destination = parentContainerId.substring(parentContainerId.indexOf('_')); // extract destination from parent container ID
+                // var destination = evt.item.parentNode.getAttribute('id').substring(evt.item.parentNode.getAttribute('id').indexOf('_'));
+                // if (evt.item.parentNode.children.length == 2) {
+                //     var fItem = evt.item.parentNode.children[1];
+                //     var likelydata = document.getElementById('likely' + destination);
+                //     likelydata.appendChild(fItem);
+                // }
+                var parentContainer = evt.item.parentNode;
+                if (parentContainer.children.length > 1) {
+                    var secondItem = parentContainer.children[1];
+                    var destination = parentContainer.getAttribute('id').substring(parentContainer.getAttribute('id').indexOf('_'));
+                    var possible = document.getElementById('possible' + destination);
+                    var likely = document.getElementById('likely' + destination);
 
-                if (evt.item.parentNode.children.length == 2) {
-                    var firstItem = evt.item.parentNode.children[0];
-                    var likelyContainer = document.getElementById('likely' + destination);
-                    likelyContainer.appendChild(firstItem);
+                    if (likely.children.length == 0) {
+                        likely.appendChild(secondItem);
+                    }
+                    else if (likely.children.length == 1) {
+                        likely.appendChild(secondItem)
+
+                        if (possible.children.length == 0) {
+                            var secondlikelychild = likely.children[0];
+                            possible.appendChild(secondlikelychild)
+                        }
+
+                        else if (possible.children.length == 1) {
+                            possible.children[0].remove();
+                            var secondlikelychild = likely.children[0];
+                            possible.appendChild(secondlikelychild)
+                        }
+                    }
                 }
-
             }
+
         });
     });
+
     $(".LikelyAccountDatalist").each(function () {
         new Sortable(this, {
             group: "DestinationDataShare",
             animation: 150,
             onAdd: function (evt) {
-                var item = evt.item;
-                var parentContainerId = evt.item.parentNode.getAttribute('id');
-                var destination = parentContainerId.substring(parentContainerId.indexOf('_')); // extract destination from parent container ID
+                var destination = evt.item.parentNode.getAttribute('id').substring(evt.item.parentNode.getAttribute('id').indexOf('_'));
                 if (evt.item.parentNode.children.length == 2) {
-                    var firstItem = evt.item.parentNode.children[0];
-                    var possibles = document.getElementById('possibles' + destination);
-                    possibles.appendChild(firstItem);
+                    var fItem = evt.item.parentNode.children[1];
+                    var possiblesdata = document.getElementById('possible' + destination);
+                    possiblesdata.appendChild(fItem);
                 }
             }
         });
     });
+
     $(".possibleAccountDatalist").each(function () {
         new Sortable(this, {
             group: "DestinationDataShare",
@@ -349,4 +403,10 @@ $(function () {
     });
 
 });
+
+$(function () {
+    document.getElementById("assetsbtn").click();
+});
+
+
 
