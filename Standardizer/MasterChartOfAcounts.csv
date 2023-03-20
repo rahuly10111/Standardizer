@@ -128,28 +128,28 @@ AccountTypeCode,AccountTypeName,SubAccountTypeCode,SubAccountName,AccountCode,Ac
 4000,Product Revenue,4700,Grooming Revenue,,,FALSE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 4000,Product Revenue,4900,Fee Discounts & Client Returns (contra accounts),4901,Fee Discounts,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
 4000,Product Revenue,4900,Fee Discounts & Client Returns (contra accounts),4902,Returns & Allowances,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
-5000,"Outside (or ""1099"") Professional Services Costs",5101,Relief Emergency,,,TRUE,TRUE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE
-5000,"Outside (or ""1099"") Professional Services Costs",5102,Radiology,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
-5000,"Outside (or ""1099"") Professional Services Costs",5103,Surgical,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
-5000,"Outside (or ""1099"") Professional Services Costs",5104,Other Specialty,5104,Other Specialty,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
-5000,"Outside (or ""1099"") Professional Services Costs",5200,In-House Imaging Costs,5201,X-Ray Cost,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
-5000,"Outside (or ""1099"") Professional Services Costs",5200,In-House Imaging Costs,5202,Dental X-Ray Cost,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
-5000,"Outside (or ""1099"") Professional Services Costs",5200,In-House Imaging Costs,5203,CT Cost,TRUE,TRUE,FALSE,FALSE,TRUE,TRUE,TRUE,TRUE
-5000,"Outside (or ""1099"") Professional Services Costs",5200,In-House Imaging Costs,5204,Ultrasound Cost,TRUE,TRUE,FALSE,FALSE,TRUE,TRUE,TRUE,TRUE
-5000,"Outside (or ""1099"") Professional Services Costs",5200,In-House Imaging Costs,5205,MRI Cost,TRUE,TRUE,FALSE,FALSE,TRUE,TRUE,TRUE,TRUE
-5000,"Outside (or ""1099"") Professional Services Costs",5300,In-House Laboratory Costs,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
-5000,"Outside (or ""1099"") Professional Services Costs",5400,Outside Professional Service Costs,5401,Outside Laboratory Revenue,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
-5000,"Outside (or ""1099"") Professional Services Costs",5400,Outside Professional Service Costs,5402,Outside Radiology (Imaging) Revenue,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
-5000,"Outside (or ""1099"") Professional Services Costs",5400,Outside Professional Service Costs,5403,Mortuary/Disposal Services,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
-5000,"Outside (or ""1099"") Professional Services Costs",5500,Medical Supplies,5501,General Medical Supplies,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
-5000,"Outside (or ""1099"") Professional Services Costs",5500,Medical Supplies,5502,Blood Products,TRUE,TRUE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE
-5000,"Outside (or ""1099"") Professional Services Costs",5500,Medical Supplies,5503,Surgical Supplies,TRUE,TRUE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE
-5000,"Outside (or ""1099"") Professional Services Costs",5500,Medical Supplies,5504,Laboratory Supplies,TRUE,TRUE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE
-5000,"Outside (or ""1099"") Professional Services Costs",5500,Medical Supplies,5505,Medical/Diagnostic Software,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
-5000,"Outside (or ""1099"") Professional Services Costs",5500,Medical Supplies,5506,Oxygen Supplies,TRUE,TRUE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE
-5000,"Outside (or ""1099"") Professional Services Costs",5500,Medical Supplies,5507,Dermatological Supplies,TRUE,TRUE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE
-5000,"Outside (or ""1099"") Professional Services Costs",5500,Medical Supplies,5508,Oncology Supplies,TRUE,TRUE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE
-5000,"Outside (or ""1099"") Professional Services Costs",5500,Medical Supplies,5509,Other Specialty Supplies,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+5000,"Professional Services Costs",5101,Relief Emergency,,,TRUE,TRUE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE
+5000,"Professional Services Costs",5102,Radiology,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+5000,"Professional Services Costs",5103,Surgical,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+5000,"Professional Services Costs",5104,Other Specialty,5104,Other Specialty,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+5000,"Professional Services Costs",5200,In-House Imaging Costs,5201,X-Ray Cost,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+5000,"Professional Services Costs",5200,In-House Imaging Costs,5202,Dental X-Ray Cost,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+5000,"Professional Services Costs",5200,In-House Imaging Costs,5203,CT Cost,TRUE,TRUE,FALSE,FALSE,TRUE,TRUE,TRUE,TRUE
+5000,"Professional Services Costs",5200,In-House Imaging Costs,5204,Ultrasound Cost,TRUE,TRUE,FALSE,FALSE,TRUE,TRUE,TRUE,TRUE
+5000,"Professional Services Costs",5200,In-House Imaging Costs,5205,MRI Cost,TRUE,TRUE,FALSE,FALSE,TRUE,TRUE,TRUE,TRUE
+5000,"Professional Services Costs",5300,In-House Laboratory Costs,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+5000,"Professional Services Costs",5400,Outside Professional Service Costs,5401,Outside Laboratory Revenue,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+5000,"Professional Services Costs",5400,Outside Professional Service Costs,5402,Outside Radiology (Imaging) Revenue,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+5000,"Professional Services Costs",5400,Outside Professional Service Costs,5403,Mortuary/Disposal Services,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+5000,"Professional Services Costs",5500,Medical Supplies,5501,General Medical Supplies,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+5000,"Professional Services Costs",5500,Medical Supplies,5502,Blood Products,TRUE,TRUE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE
+5000,"Professional Services Costs",5500,Medical Supplies,5503,Surgical Supplies,TRUE,TRUE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE
+5000,"Professional Services Costs",5500,Medical Supplies,5504,Laboratory Supplies,TRUE,TRUE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE
+5000,"Professional Services Costs",5500,Medical Supplies,5505,Medical/Diagnostic Software,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+5000,"Professional Services Costs",5500,Medical Supplies,5506,Oxygen Supplies,TRUE,TRUE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE
+5000,"Professional Services Costs",5500,Medical Supplies,5507,Dermatological Supplies,TRUE,TRUE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE
+5000,"Professional Services Costs",5500,Medical Supplies,5508,Oncology Supplies,TRUE,TRUE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE
+5000,"Professional Services Costs",5500,Medical Supplies,5509,Other Specialty Supplies,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
 5700,Product Costs,5710,Medication (FDA controlled) Costs,5711,FDA Prescription Medication Costs,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
 5700,Product Costs,5710,Medication (FDA controlled) Costs,5712,Injection Costs,FALSE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 5700,Product Costs,5710,Medication (FDA controlled) Costs,5713,Flea-Tick Non-HW Parasite Control Medication Cost,FALSE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE

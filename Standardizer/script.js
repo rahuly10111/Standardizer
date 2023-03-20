@@ -136,7 +136,7 @@ function alldestinationdata() {
     let alltabledata = "";
     masterAccount_Object.forEach((data) => {
         if (data.AccountCode != "") {
-            alltabledata += "<div class='destinationData' >" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</div>";
+            alltabledata += "<div class='destinationData' data-atr='" + data.AccountCode + "' >" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</div>";
         }
 
     });
@@ -148,7 +148,7 @@ function assetsdestinationdata() {
     let assettabledata = "";
     masterAccount_Object.forEach((data) => {
         if (data.AccountTypeName == "ASSETS" && data.AccountCode != "") {
-            assettabledata += "<li class='destinationData' >" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</li>";
+            assettabledata += "<li class='destinationData' data-atr='" + data.AccountCode + "' >" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</li>";
         }
     });
     $('#DestinationAccountStructureData').html(assettabledata);
@@ -158,7 +158,7 @@ function libilitydestinationdata() {
     let liabilitytabledata = "";
     masterAccount_Object.forEach((data) => {
         if (data.AccountTypeName == "LIABILITIES") {
-            liabilitytabledata += "<li class='destinationData'>" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</li>";
+            liabilitytabledata += "<li class='destinationData' data-atr='" + data.AccountCode + "' >" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</li>";
         }
     });
     $('#DestinationAccountStructureData').html(liabilitytabledata);
@@ -168,32 +168,41 @@ function equitydestinationdata() {
     let equitytabledata = "";
     masterAccount_Object.forEach((data) => {
         if (data.AccountTypeName == "EQUITY/CAPITAL") {
-            equitytabledata += "<li class='destinationData'>" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</li>";
+            equitytabledata += "<li class='destinationData' data-atr='" + data.AccountCode + "' >" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</li>";
         }
     });
     $('#DestinationAccountStructureData').html(equitytabledata);
 };
 
 function revenuedestinationdata() {
-    let equitytabledata = "";
+    let revenuetabledata = "";
     masterAccount_Object.forEach((data) => {
         if (data.AccountTypeName == "Professional Services Revenue" || data.AccountTypeName == "Product Revenue") {
-            equitytabledata += "<li class='destinationData'>" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</li>";
+            revenuetabledata += "<li class='destinationData' data-atr='" + data.AccountCode + "' >" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</li>";
         }
     });
-    $('#DestinationAccountStructureData').html(equitytabledata);
+    $('#DestinationAccountStructureData').html(revenuetabledata);
 };
 
-// function cogsdestinationdata() {
-//     let equitytabledata = "";
-//     masterAccount_Object.forEach((data) => {
-//         if (data.AccountTypeName == "EQUITY/CAPITAL") {
-//             equitytabledata += "<li class='destinationData'>" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</li>";
-//         }
-//     });
-//     $('#DestinationAccountStructureData').html(equitytabledata);
-// };
+function cogsdestinationdata() {
+    let cogstabledata = "";
+    masterAccount_Object.forEach((data) => {
+        if (data.AccountTypeName == "Professional Services Costs" || data.AccountTypeName == "Product Costs") {
+            cogstabledata += "<li class='destinationData' data-atr='" + data.AccountCode + "' >" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</li>";
+        }
+    });
+    $('#DestinationAccountStructureData').html(cogstabledata);
+};
 
+function gaexpensesdestinationdata() {
+    let garevenuetabledata = "";
+    masterAccount_Object.forEach((data) => {
+        if (data.AccountTypeName == "Labor Expense") {
+            garevenuetabledata += "<li class='destinationData' data-atr='" + data.AccountCode + "' >" + "&nbsp;⠿ " + data.AccountCode + '--' + data.AccountName + "</li>";
+        }
+    });
+    $('#DestinationAccountStructureData').html(garevenuetabledata);
+};
 
 $("#alldata").click(function () {
     alldestinationdata();
@@ -214,6 +223,14 @@ $("#equitydata").click(function () {
 
 $("#revenuedata").click(function () {
     revenuedestinationdata();
+});
+
+$("#cogsdata").click(function () {
+    cogsdestinationdata();
+});
+
+$("#gaexpensesdata").click(function () {
+    gaexpensesdestinationdata();
 });
 
 $("#assetsbtn").click(function () {
@@ -286,17 +303,51 @@ $("#revenuebtn").click(function () {
     document.getElementById("revenuedata").click(revenuedestinationdata());
 });
 
+$("#cogsbtn").click(function () {
+    $(".sourceAccountDataList").each(function (index) {
+        var id = this.id;
+        $(`#${id}`).hide();
+        $(`#mostlikely_${id}`).hide();
+        $(`#likely_${id}`).hide();
+        $(`#possible_${id}`).hide();
+        if (standardAccount_Object[index].Type == "COGS") {
+            $(`#${id}`).show();
+            $(`#mostlikely_${id}`).show();
+            $(`#likely_${id}`).show();
+            $(`#possible_${id}`).show();
+        }
+    });
+    document.getElementById("cogsdata").click(cogsdestinationdata());
+});
 
+$("#gaexpenses").click(function () {
+    $(".sourceAccountDataList").each(function (index) {
+        var id = this.id;
+        $(`#${id}`).hide();
+        $(`#mostlikely_${id}`).hide();
+        $(`#likely_${id}`).hide();
+        $(`#possible_${id}`).hide();
+        if (standardAccount_Object[index].Type == "Expense") {
+            $(`#${id}`).show();
+            $(`#mostlikely_${id}`).show();
+            $(`#likely_${id}`).show();
+            $(`#possible_${id}`).show();
+        }
+    });
+    document.getElementById("gaexpensesdata").click(gaexpensesdestinationdata());
+});
+
+var todaydate = new Date();
+var dd = String(todaydate.getDate()).padStart(2, '0');
+var mm = String(todaydate.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = todaydate.getFullYear();
+todaydate = mm + '/' + dd + '/' + yyyy;
+var date = new Date();
+var time = date.toLocaleString([], { hour: '2-digit', minute: '2-digit' });
 $("#submitbtn").click(function () {
-    const tabledata = [];
-    var sourcedata = document.getElementById("SourceAccountStructureData");
-    var sourcelidata = sourcedata.querySelectorAll("li");
-    console.log(sourcelidata);
-
-    standardAccount_Object.forEach(li => {
+    const tabledata = new Array;
+    standardAccount_Object.forEach(function (li) {
         let data = li.Number;
-        console.log(data)
-
         const obj = {
             sourcedata: data,
             Mostlikely: $("#mostlikely_" + data).html(),
@@ -306,20 +357,21 @@ $("#submitbtn").click(function () {
         tabledata.push(obj);
     })
     localStorage.setItem("Data", JSON.stringify(tabledata));
+
+
+    // var time = new Date();
+    // time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+    $("#lastupdatedtime").html("Last Updated On  " + todaydate + " at " + time);
 });
 
 $(function () {
     var getlocalstoragedata = JSON.parse(localStorage.getItem("Data"));
-    var getsourcedata = document.getElementById("SourceAccountStructureData");
-    var getsourcelidata = getsourcedata.querySelectorAll("li");
-    getsourcelidata.forEach(function (li, index) {
-        let getdata = li.id;
+    standardAccount_Object.forEach(function (li, index) {
+        let getdata = li.Number;
         $("#mostlikely_" + getdata).html(getlocalstoragedata[index].Mostlikely)
         $("#likely_" + getdata).html(getlocalstoragedata[index].Likely)
         $("#possible_" + getdata).html(getlocalstoragedata[index].Possible)
     });
-
-
 });
 
 $(function () {
@@ -344,37 +396,41 @@ $(function () {
             group: "DestinationDataShare",
             animation: 150,
             onAdd: function (evt) {
-                // var destination = evt.item.parentNode.getAttribute('id').substring(evt.item.parentNode.getAttribute('id').indexOf('_'));
-                // if (evt.item.parentNode.children.length == 2) {
-                //     var fItem = evt.item.parentNode.children[1];
-                //     var likelydata = document.getElementById('likely' + destination);
-                //     likelydata.appendChild(fItem);
-                // }
-                var parentContainer = evt.item.parentNode;
-                if (parentContainer.children.length > 1) {
-                    var secondItem = parentContainer.children[1];
-                    var destination = parentContainer.getAttribute('id').substring(parentContainer.getAttribute('id').indexOf('_'));
-                    var possible = document.getElementById('possible' + destination);
-                    var likely = document.getElementById('likely' + destination);
+                var destination = evt.item.parentNode.getAttribute('id').substring(evt.item.parentNode.getAttribute('id').indexOf('_'));
+                var possibleID = document.getElementById('possible' + destination);
+                var likelyID = document.getElementById('likely' + destination);
 
-                    if (likely.children.length == 0) {
-                        likely.appendChild(secondItem);
+                if (evt.item.parentNode.children.length == 2) {
+                    var ml0 = evt.item.parentNode.children[0].getAttribute("data-atr");
+                    var ml1 = evt.item.parentNode.children[1].getAttribute("data-atr");
+                    console.log(ml0, ml1);
+                    if (ml0 == ml1) {
+                        alert("same data found");
+                        evt.item.parentNode.children[1].remove();
                     }
-                    else if (likely.children.length == 1) {
-                        likely.appendChild(secondItem)
+                }
 
-                        if (possible.children.length == 0) {
-                            var secondlikelychild = likely.children[0];
-                            possible.appendChild(secondlikelychild)
+                if (evt.item.parentNode.children.length > 1) {
+
+                    var secondItem = evt.item.parentNode.children[1];
+                    if (likelyID.children.length == 0) {
+                        likelyID.appendChild(secondItem);
+                    }
+                    else if (likelyID.children.length == 1) {
+                        likelyID.appendChild(secondItem)
+
+                        if (possibleID.children.length == 0) {
+                            var secondlikelychild = likelyID.children[0]
+                            possibleID.appendChild(secondlikelychild)
                         }
-
-                        else if (possible.children.length == 1) {
-                            possible.children[0].remove();
-                            var secondlikelychild = likely.children[0];
-                            possible.appendChild(secondlikelychild)
+                        else if (possibleID.children.length == 1) {
+                            possibleID.children[0].remove();
+                            var secondlikelychild = likelyID.children[0];
+                            possibleID.appendChild(secondlikelychild)
                         }
                     }
                 }
+
             }
 
         });
@@ -386,10 +442,13 @@ $(function () {
             animation: 150,
             onAdd: function (evt) {
                 var destination = evt.item.parentNode.getAttribute('id').substring(evt.item.parentNode.getAttribute('id').indexOf('_'));
+                var possiblesdata = document.getElementById('possible' + destination);
                 if (evt.item.parentNode.children.length == 2) {
-                    var fItem = evt.item.parentNode.children[1];
-                    var possiblesdata = document.getElementById('possible' + destination);
-                    possiblesdata.appendChild(fItem);
+                    var firstdata = evt.item.parentNode.children[1];
+                    possiblesdata.appendChild(firstdata);
+                }
+                if (possiblesdata.children.length == 2) {
+                    possiblesdata.children[0].remove();
                 }
             }
         });
@@ -399,6 +458,11 @@ $(function () {
         new Sortable(this, {
             group: "DestinationDataShare",
             animation: 150,
+            onAdd: function (evt) {
+                if (evt.item.parentNode.children.length == 2) {
+                    evt.item.parentNode.children[1].remove();
+                }
+            }
         });
     });
 
@@ -406,6 +470,7 @@ $(function () {
 
 $(function () {
     document.getElementById("assetsbtn").click();
+    $("#lastupdatedtime").html("Last Updated On  " + todaydate + " at " + time);
 });
 
 
