@@ -108,7 +108,6 @@ AccountTypeCode,AccountTypeName,SubAccountTypeCode,SubAccountName,AccountCode,Ac
 4000,Professional Services Revenue,4200,In-House Imaging Revenue,4203,CT Revenue,TRUE,TRUE,FALSE,FALSE,TRUE,TRUE,TRUE,TRUE
 4000,Professional Services Revenue,4200,In-House Imaging Revenue,4204,Ultrasound Revenue,TRUE,TRUE,FALSE,FALSE,TRUE,TRUE,TRUE,TRUE
 4000,Professional Services Revenue,4200,In-House Imaging Revenue,4205,MRI Revenue,TRUE,TRUE,FALSE,FALSE,TRUE,TRUE,TRUE,TRUE
-4000,Professional Services Revenue,4300,In-House Laboratory Revenue,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
 4000,Professional Services Revenue,4400,Outside Professional Service Revenue,4401,Outside Laboratory Revenue,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
 4000,Professional Services Revenue,4400,Outside Professional Service Revenue,4402,Outside Radiology (Imaging) Revenue,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
 4000,Professional Services Revenue,4400,Outside Professional Service Revenue,4403,Mortuary/Disposal Services,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
@@ -124,8 +123,6 @@ AccountTypeCode,AccountTypeName,SubAccountTypeCode,SubAccountName,AccountCode,Ac
 4000,Product Revenue,4530,Other Product Revenue,4533,Pet Supplies,FALSE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 4000,Product Revenue,4530,Other Product Revenue,4534,OTC Flea-Tick Control Product,FALSE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 4000,Product Revenue,4530,Other Product Revenue,4535,Internet Ancillary Product,FALSE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
-4000,Product Revenue,4600,Boarding Revenue,,,FALSE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
-4000,Product Revenue,4700,Grooming Revenue,,,FALSE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 4000,Product Revenue,4900,Fee Discounts & Client Returns (contra accounts),4901,Fee Discounts,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
 4000,Product Revenue,4900,Fee Discounts & Client Returns (contra accounts),4902,Returns & Allowances,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
 5000,"Professional Services Costs",5101,Relief Emergency,,,TRUE,TRUE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE
@@ -162,8 +159,6 @@ AccountTypeCode,AccountTypeName,SubAccountTypeCode,SubAccountName,AccountCode,Ac
 5700,Product Costs,5730,Other Product Costs,5733,Pet Supplies,FALSE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 5700,Product Costs,5730,Other Product Costs,5734,OTC Flea-Tick Control Product,FALSE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 5700,Product Costs,5730,Other Product Costs,5735,Internet Ancillary Product,FALSE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
-5700,Product Costs,5800,Boarding Cost,,,FALSE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
-5700,Product Costs,5900,Grooming Cost,,,FALSE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 6000,Labor Expense,6000,Doctor Salary Expense,6000,Generalist Technician Salary,FALSE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE
 6000,Labor Expense,6000,Doctor Salary Expense,6010,Emergency/Critical Care Salary,TRUE,TRUE,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE
 6000,Labor Expense,6020,Large Animal Doctor Salary Expense,6021,Equine Revenue,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,TRUE,TRUE
@@ -248,24 +243,21 @@ AccountTypeCode,AccountTypeName,SubAccountTypeCode,SubAccountName,AccountCode,Ac
 6000,Labor Expense,6400,Facility Expense,6404,Equipment Rental Expense,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
 6000,Labor Expense,6400,Facility Expense,6408,Remote Storage Expense,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
 6000,Labor Expense,6400,Facility Expense,6409,Minor Equipment Expense,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-6000,Labor Expense,6410,"Equipment Maintenance Expense, In-House",6411,Medical Equipment Maintenance,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
-6000,Labor Expense,6410,"Equipment Maintenance Expense, In-House",6412,Lab Equipment Maintenance,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
-6000,Labor Expense,6410,"Equipment Maintenance Expense, In-House",6413,Office Equipment Maintenance,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
-6000,Labor Expense,6410,"Equipment Maintenance Expense, In-House",6414,Computer/IT Equipment Maintenance,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
-6000,Labor Expense,6410,"Equipment Maintenance Expense, In-House",6415,Building Maintenance,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
-6000,Labor Expense,6420,"Equipment Maintenance, Service Contracts",6421,Medical Equipment Service Contract,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
-6000,Labor Expense,6420,"Equipment Maintenance, Service Contracts",6422,Lab Equipment Service Contract,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
-6000,Labor Expense,6420,"Equipment Maintenance, Service Contracts",6423,Office Equipment Service Contract,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
-6000,Labor Expense,6420,"Equipment Maintenance, Service Contracts",6424,Computer/IT Equipment Service Contract,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
-6000,Labor Expense,6420,"Equipment Maintenance, Service Contracts",6425,Buiilding Service Contract,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+6000,Labor Expense,6410,"Equipment Maintenance Expense",6411,Medical Equipment Maintenance,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+6000,Labor Expense,6410,"Equipment Maintenance Expense",6412,Lab Equipment Maintenance,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+6000,Labor Expense,6410,"Equipment Maintenance Expense",6413,Office Equipment Maintenance,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+6000,Labor Expense,6410,"Equipment Maintenance Expense",6414,Computer/IT Equipment Maintenance,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+6000,Labor Expense,6410,"Equipment Maintenance Expense",6415,Building Maintenance,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+6000,Labor Expense,6420,"Equipment Maintenance",6421,Medical Equipment Service Contract,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+6000,Labor Expense,6420,"Equipment Maintenance",6422,Lab Equipment Service Contract,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+6000,Labor Expense,6420,"Equipment Maintenance",6423,Office Equipment Service Contract,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+6000,Labor Expense,6420,"Equipment Maintenance",6424,Computer/IT Equipment Service Contract,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+6000,Labor Expense,6420,"Equipment Maintenance",6425,Buiilding Service Contract,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
 6000,Labor Expense,6430,Equipment Repair Expense,6431,Medical Equipment Repairs,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
 6000,Labor Expense,6430,Equipment Repair Expense,6432,Lab Equipment Repairs,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
 6000,Labor Expense,6430,Equipment Repair Expense,6433,Office Equipment Repairs,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
 6000,Labor Expense,6430,Equipment Repair Expense,6434,Computer/IT Equipment Repairs,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
 6000,Labor Expense,6430,Equipment Repair Expense,6435,Facility Repairs,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
-6000,Labor Expense,6440,Janatorial/Cleaning Expense,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
-6000,Labor Expense,6450,General Liability Insurance Expense,,,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
-6000,Labor Expense,6455,Flood Insurance Expense,,,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
 6000,Labor Expense,,Property Tax Expense,6461,Real Estate Tax Expense,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
 6000,Labor Expense,,Property Tax Expense,6465,Personal Property Tax Expense,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
 6000,Labor Expense,,Property Tax Expense,6470,Practice Vehicle Expense,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE

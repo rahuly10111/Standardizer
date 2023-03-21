@@ -77,7 +77,7 @@ $(function sourceAccountdatatable() {
     console.log(standardAccount_Object);
     standardAccount_Object.forEach((data) => {
         if (data.Number != "") {
-            allsourceaccountdata += "<li class='sourceAccountDataList' id='" + data.Number + "'>" + " &nbsp;" + data.Number + " &nbsp; " + data.Name + "<i class='bi bi-check2-all'></i> <i class='bi bi-clock-history'></i>" + "</li>";
+            allsourceaccountdata += "<li class='sourceAccountDataList' id='" + data.Number + "'>" + " &nbsp;" + data.Number + " &nbsp; " + data.Name + "<i class='bi bi-check2-all'></i> <i class='bi bi-clock-history historymodel ' id='historymodel' ></i>" + "</li>";
 
             allmostlikelydata += "<li class='mostLikelyAccountDatalist' id='mostlikely_" + data.Number + "'>" + "</li>";
             alllikelydata += "<li class='LikelyAccountDatalist'  id='likely_" + data.Number + "' >" + "</li>";
@@ -337,13 +337,6 @@ $("#gaexpenses").click(function () {
     document.getElementById("gaexpensesdata").click(gaexpensesdestinationdata());
 });
 
-var todaydate = new Date();
-var dd = String(todaydate.getDate()).padStart(2, '0');
-var mm = String(todaydate.getMonth() + 1).padStart(2, '0'); //January is 0!
-var yyyy = todaydate.getFullYear();
-todaydate = mm + '/' + dd + '/' + yyyy;
-var date = new Date();
-var time = date.toLocaleString([], { hour: '2-digit', minute: '2-digit' });
 $("#submitbtn").click(function () {
     const tabledata = new Array;
     standardAccount_Object.forEach(function (li) {
@@ -358,10 +351,22 @@ $("#submitbtn").click(function () {
     })
     localStorage.setItem("Data", JSON.stringify(tabledata));
 
-
-    // var time = new Date();
-    // time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
-    $("#lastupdatedtime").html("Last Updated On  " + todaydate + " at " + time);
+    let todaydate = new Date();
+    let dd = String(todaydate.getDate()).padStart(2, '0');
+    let mm = String(todaydate.getMonth() + 1).padStart(2, '0'); //January is 0!
+    let yyyy = todaydate.getFullYear();
+    todaydate = mm + '/' + dd + '/' + yyyy;
+    let date = new Date();
+    let updatedtime = date.toLocaleString([], { hour: '2-digit', minute: '2-digit' });
+    const lastupdateddatetime = new Array;
+    let datetimeobj = {
+        date: todaydate,
+        time: updatedtime
+    }
+    lastupdateddatetime.push(datetimeobj);
+    localStorage.setItem("DateTime", JSON.stringify(lastupdateddatetime));
+    let updatedatetime = JSON.parse(localStorage.getItem("DateTime"));
+    $("#lastupdatedtime").html("Last Updated On  " + updatedatetime[0].date + " at " + updatedatetime[0].time);
 });
 
 $(function () {
@@ -401,17 +406,14 @@ $(function () {
                 var likelyID = document.getElementById('likely' + destination);
 
                 if (evt.item.parentNode.children.length == 2) {
-                    var ml0 = evt.item.parentNode.children[0].getAttribute("data-atr");
-                    var ml1 = evt.item.parentNode.children[1].getAttribute("data-atr");
-                    console.log(ml0, ml1);
-                    if (ml0 == ml1) {
-                        alert("same data found");
+                    var mostlikelyfirstitem = evt.item.parentNode.children[0].getAttribute("data-atr");
+                    var mpstlikelyseconditem = evt.item.parentNode.children[1].getAttribute("data-atr");
+                    if (mostlikelyfirstitem == mpstlikelyseconditem) {
+                        swal("warning!", "This Item already Exists!", "warning");
                         evt.item.parentNode.children[1].remove();
                     }
                 }
-
                 if (evt.item.parentNode.children.length > 1) {
-
                     var secondItem = evt.item.parentNode.children[1];
                     if (likelyID.children.length == 0) {
                         likelyID.appendChild(secondItem);
@@ -443,6 +445,15 @@ $(function () {
             onAdd: function (evt) {
                 var destination = evt.item.parentNode.getAttribute('id').substring(evt.item.parentNode.getAttribute('id').indexOf('_'));
                 var possiblesdata = document.getElementById('possible' + destination);
+
+                if (evt.item.parentNode.children.length == 2) {
+                    var likelyfirstitem = evt.item.parentNode.children[0].getAttribute("data-atr");
+                    var likelyseconditem = evt.item.parentNode.children[1].getAttribute("data-atr");
+                    if (likelyfirstitem == likelyseconditem) {
+                        swal("warning!", "This Item already Exists!", "warning");
+                        evt.item.parentNode.children[1].remove();
+                    }
+                }
                 if (evt.item.parentNode.children.length == 2) {
                     var firstdata = evt.item.parentNode.children[1];
                     possiblesdata.appendChild(firstdata);
@@ -460,6 +471,14 @@ $(function () {
             animation: 150,
             onAdd: function (evt) {
                 if (evt.item.parentNode.children.length == 2) {
+                    var possiblefirstitem = evt.item.parentNode.children[0].getAttribute("data-atr");
+                    var possibleseconditem = evt.item.parentNode.children[1].getAttribute("data-atr");
+                    if (possiblefirstitem == possibleseconditem) {
+                        swal("warning!", "This Item already Exists!", "warning");
+                        evt.item.parentNode.children[1].remove();
+                    }
+                }
+                if (evt.item.parentNode.children.length == 2) {
                     evt.item.parentNode.children[1].remove();
                 }
             }
@@ -470,7 +489,8 @@ $(function () {
 
 $(function () {
     document.getElementById("assetsbtn").click();
-    $("#lastupdatedtime").html("Last Updated On  " + todaydate + " at " + time);
+    let updatedddatetime = JSON.parse(localStorage.getItem("DateTime"));
+    $("#lastupdatedtime").html("Last Updated On  " + updatedddatetime[0].date + " at " + updatedddatetime[0].time);
 });
 
 
