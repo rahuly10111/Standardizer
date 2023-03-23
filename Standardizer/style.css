@@ -270,6 +270,7 @@ div.scrollmenu a {
   padding: 5px;
   text-decoration: none;
   font-size: 13px;
+  font-weight: normal;
 }
 
 a:hover {
@@ -282,9 +283,10 @@ a:hover {
 
 .searchicon {
   position: relative;
-  top: -31px;
-  right: -4px;
+  top: -32px;
+  right: -5px;
   color: gray;
+  font-size: 0.8rem;
 }
 
 .searchbar {
@@ -293,6 +295,7 @@ a:hover {
 
 .scrollmenu a.active {
   color: #0d9d66;
+  font-weight: bold;
 }
 .scrollmenu a {
   text-decoration: none;
@@ -393,3 +396,6 @@ a:hover {
 .submitBtn:hover {
   color: white;
 }
+
+
+

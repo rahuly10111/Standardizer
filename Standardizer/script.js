@@ -350,6 +350,7 @@ $("#submitbtn").click(function () {
         tabledata.push(obj);
     })
     localStorage.setItem("Data", JSON.stringify(tabledata));
+    swal("Good job!", "Your Changes are saved!", "success");
 
     let todaydate = new Date();
     let dd = String(todaydate.getDate()).padStart(2, '0');
@@ -405,15 +406,28 @@ $(function () {
                 var possibleID = document.getElementById('possible' + destination);
                 var likelyID = document.getElementById('likely' + destination);
 
-                if (evt.item.parentNode.children.length == 2) {
+                if (evt.item.parentNode.children.length == 1 && likelyID.children.length == 1) {
+                    var mostlikelyfirstitem = evt.item.parentNode.children[0].getAttribute("data-atr");
+                    var likelyfirstitem = likelyID.children[0].getAttribute("data-atr");
+                    if (mostlikelyfirstitem == likelyfirstitem) {
+                        swal("warning!", "This Item already Exists!", "warning");
+                        evt.item.parentNode.children[0].remove();
+                    }
+                } else if (evt.item.parentNode.children.length == 1 && possibleID.children.length == 1) {
+                    var mostlikelyfirstitem = evt.item.parentNode.children[0].getAttribute("data-atr");
+                    var possiblefirstitem = possibleID.children[0].getAttribute("data-atr");
+                    if (mostlikelyfirstitem == possiblefirstitem) {
+                        swal("warning!", "This Item already Exists!", "warning");
+                        evt.item.parentNode.children[0].remove();
+                    }
+                } else if (evt.item.parentNode.children.length == 2) {
                     var mostlikelyfirstitem = evt.item.parentNode.children[0].getAttribute("data-atr");
                     var mpstlikelyseconditem = evt.item.parentNode.children[1].getAttribute("data-atr");
                     if (mostlikelyfirstitem == mpstlikelyseconditem) {
                         swal("warning!", "This Item already Exists!", "warning");
                         evt.item.parentNode.children[1].remove();
                     }
-                }
-                if (evt.item.parentNode.children.length > 1) {
+                } else if (evt.item.parentNode.children.length > 1) {
                     var secondItem = evt.item.parentNode.children[1];
                     if (likelyID.children.length == 0) {
                         likelyID.appendChild(secondItem);
@@ -432,7 +446,6 @@ $(function () {
                         }
                     }
                 }
-
             }
 
         });
@@ -445,8 +458,22 @@ $(function () {
             onAdd: function (evt) {
                 var destination = evt.item.parentNode.getAttribute('id').substring(evt.item.parentNode.getAttribute('id').indexOf('_'));
                 var possiblesdata = document.getElementById('possible' + destination);
-
-                if (evt.item.parentNode.children.length == 2) {
+                var mostlikelydata = document.getElementById('mostlikely' + destination);
+                if (evt.item.parentNode.children.length == 1 && mostlikelydata.children.length == 1) {
+                    var likelyfirstitem = evt.item.parentNode.children[0].getAttribute("data-atr");
+                    var mostlikelyfirstitem = mostlikelydata.children[0].getAttribute("data-atr");
+                    if (likelyfirstitem == mostlikelyfirstitem) {
+                        swal("warning!", "This Item already Exists!", "warning");
+                        evt.item.parentNode.children[0].remove();
+                    }
+                } else if (evt.item.parentNode.children.length == 1 && possiblesdata.children.length == 1) {
+                    var likelyfirstitem = evt.item.parentNode.children[0].getAttribute("data-atr");
+                    var possiblefirstitem = possiblesdata.children[0].getAttribute("data-atr");
+                    if (likelyfirstitem == possiblefirstitem) {
+                        swal("warning!", "This Item already Exists!", "warning");
+                        evt.item.parentNode.children[0].remove();
+                    }
+                } else if (evt.item.parentNode.children.length == 2) {
                     var likelyfirstitem = evt.item.parentNode.children[0].getAttribute("data-atr");
                     var likelyseconditem = evt.item.parentNode.children[1].getAttribute("data-atr");
                     if (likelyfirstitem == likelyseconditem) {
@@ -454,11 +481,11 @@ $(function () {
                         evt.item.parentNode.children[1].remove();
                     }
                 }
-                if (evt.item.parentNode.children.length == 2) {
+                else if (evt.item.parentNode.children.length == 2) {
                     var firstdata = evt.item.parentNode.children[1];
                     possiblesdata.appendChild(firstdata);
                 }
-                if (possiblesdata.children.length == 2) {
+                else if (possiblesdata.children.length == 2) {
                     possiblesdata.children[0].remove();
                 }
             }
@@ -470,7 +497,25 @@ $(function () {
             group: "DestinationDataShare",
             animation: 150,
             onAdd: function (evt) {
-                if (evt.item.parentNode.children.length == 2) {
+                var destination = evt.item.parentNode.getAttribute('id').substring(evt.item.parentNode.getAttribute('id').indexOf('_'));
+                var mostlikelydata = document.getElementById('mostlikely' + destination);
+                var likelyID = document.getElementById('likely' + destination);
+                if (evt.item.parentNode.children.length == 1 && mostlikelydata.children.length == 1) {
+                    var possiblefirstitem = evt.item.parentNode.children[0].getAttribute("data-atr");
+                    var mostlikelyfirstitem = mostlikelydata.children[0].getAttribute("data-atr");
+                    if (possiblefirstitem == mostlikelyfirstitem) {
+                        swal("warning!", "This Item already Exists!", "warning");
+                        evt.item.parentNode.children[0].remove();
+                    }
+                } else if (evt.item.parentNode.children.length == 1 && likelyID.children.length == 1) {
+                    var possiblefirstitem = evt.item.parentNode.children[0].getAttribute("data-atr");
+                    var likelyfirstitem = likelyID.children[0].getAttribute("data-atr");
+                    if (possiblefirstitem == likelyfirstitem) {
+                        swal("warning!", "This Item already Exists!", "warning");
+                        evt.item.parentNode.children[0].remove();
+                    }
+                }
+                else if (evt.item.parentNode.children.length == 2) {
                     var possiblefirstitem = evt.item.parentNode.children[0].getAttribute("data-atr");
                     var possibleseconditem = evt.item.parentNode.children[1].getAttribute("data-atr");
                     if (possiblefirstitem == possibleseconditem) {
@@ -478,7 +523,7 @@ $(function () {
                         evt.item.parentNode.children[1].remove();
                     }
                 }
-                if (evt.item.parentNode.children.length == 2) {
+                else if (evt.item.parentNode.children.length == 2) {
                     evt.item.parentNode.children[1].remove();
                 }
             }
